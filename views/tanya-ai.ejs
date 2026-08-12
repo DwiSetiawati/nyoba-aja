@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main>
+    <section class="page-header">
+      <h1>Tanya AI</h1>
+      <p>Ada pertanyaan seputar stok, harga, atau ongkir? Tanya di sini!</p>
+    </section>
+
+    <section class="chat-section" aria-label="Ruang chat Tanya AI">
+      <!-- Area bubble chat. Sprint 2: bubble ini akan diisi otomatis lewat JS + Fetch API -->
+      <div id="chatBox" class="chat-box" aria-live="polite">
+        <div class="chat-bubble bot">
+          Halo! Saya asisten Toko Sembako Ariesta. Ada yang bisa saya bantu? 😊
+        </div>
+      </div>
+
+      <!-- Form aksesibel: label terhubung ke input lewat "for" & "id" -->
+      <form id="chatForm" class="chat-form">
+        <label for="chatInput" class="sr-only-label">Tulis pertanyaan kamu</label>
+        <textarea
+          id="chatInput"
+          name="pertanyaan"
+          rows="2"
+          placeholder="Contoh: gula sekilo berapa?"
+          aria-label="Tulis pertanyaan kamu"
+          required
+        ></textarea>
+        <button type="submit" class="btn-primary">Kirim</button>
+      </form>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/chat.js"></script>
+</body>
+</html>

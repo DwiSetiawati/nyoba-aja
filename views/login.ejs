@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main>
+    <section class="auth-section">
+      <div class="auth-card">
+        <h1>Login Admin/Kasir</h1>
+        <p class="auth-subtitle">Khusus untuk Ibu Aries & kasir toko.</p>
+
+        <!-- Area pesan error/sukses, diisi dinamis lewat JS -->
+        <div id="loginMessage" class="form-message" aria-live="polite"></div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+          <div class="form-field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" autocomplete="username" required />
+          </div>
+
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required />
+          </div>
+
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main>
+    <% if (produk) { %>
+      <section class="detail-section">
+        <article class="detail-card">
+          <div class="product-icon detail-icon">📦</div>
+          <div>
+            <h1><%= produk.name %></h1>
+            <p class="product-category">Kategori: <%= produk.category %></p>
+            <p class="product-price detail-price">Rp <%= produk.price.toLocaleString('id-ID') %></p>
+            <p class="product-stock">Stok tersedia: <%= produk.stock %></p>
+            <a href="/produk" class="btn-secondary">&larr; Kembali ke Daftar Produk</a>
+          </div>
+        </article>
+      </section>
+    <% } else { %>
+      <!-- Ditampilkan kalau id di URL tidak cocok dengan produk manapun -->
+      <section class="not-found-section" aria-live="polite">
+        <h1>Produk Tidak Ditemukan</h1>
+        <p>Maaf, produk yang kamu cari tidak ada atau sudah tidak tersedia.</p>
+        <a href="/produk" class="btn-primary">Kembali ke Daftar Produk</a>
+      </section>
+    <% } %>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+</body>
+</html>

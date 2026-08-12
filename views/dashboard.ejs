@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main>
+    <section class="page-header">
+      <h1>Dashboard Admin</h1>
+      <p>Selamat datang, <strong><%= username %></strong>. Kelola produk toko di sini.</p>
+    </section>
+
+    <div id="dashboardMessage" class="form-message" aria-live="polite"></div>
+
+    <!-- Form tambah/edit produk. Satu form dipakai untuk dua mode:
+         "tambah" (default) dan "edit" (saat tombol Edit di tabel diklik) -->
+    <section class="dashboard-form-section">
+      <h2 id="formTitle">Tambah Produk Baru</h2>
+      <form id="productForm" class="product-form" novalidate>
+        <!-- productId kosong = mode tambah, terisi = mode edit -->
+        <input type="hidden" id="productId" name="productId" value="" />
+
+        <div class="form-field">
+          <label for="name">Nama Produk</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="form-field">
+          <label for="category">Kategori</label>
+          <input type="text" id="category" name="category" required />
+        </div>
+
+        <div class="form-field">
+          <label for="price">Harga (Rp)</label>
+          <input type="number" id="price" name="price" min="0" required />
+        </div>
+
+        <div class="form-field">
+          <label for="stock">Stok</label>
+          <input type="number" id="stock" name="stock" min="0" required />
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submitBtn" class="btn-primary">Tambah Produk</button>
+          <button type="button" id="cancelEditBtn" class="btn-secondary hidden">Batal Edit</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Tabel produk, diisi lewat JS dari GET /api/products -->
+    <section class="dashboard-table-section">
+      <h2>Daftar Produk</h2>
+      <div class="table-wrapper">
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nama</th>
+              <th>Kategori</th>
+              <th>Harga</th>
+              <th>Stok</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody">
+            <!-- diisi dinamis lewat JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

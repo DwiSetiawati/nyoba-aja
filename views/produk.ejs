@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main>
+    <section class="page-header">
+      <h1>Daftar Produk</h1>
+    </section>
+
+    <!-- Sprint 2: form filter TIDAK lagi reload halaman (bukan method="GET"
+         biasa). Filter dikirim lewat Fetch API ke GET /api/products,
+         logic filternya tetap jalan di server (lihat controllers/productController.js) -->
+    <section class="filter-section" aria-label="Filter produk">
+      <form id="filterForm" class="filter-form">
+        <div class="filter-field">
+          <label for="search">Cari produk</label>
+          <input type="text" id="search" name="search" placeholder="contoh: beras" />
+        </div>
+
+        <div class="filter-field">
+          <label for="kategori">Kategori</label>
+          <select id="kategori" name="kategori">
+            <option value="">Semua Kategori</option>
+            <!-- opsi kategori diisi dinamis lewat JS, karena datanya
+                 sekarang datang dari API, bukan dari server-render -->
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary">Terapkan Filter</button>
+        <button type="button" id="resetFilterBtn" class="btn-secondary">Reset</button>
+      </form>
+    </section>
+
+    <!-- Daftar produk, diisi lewat JS dari GET /api/products -->
+    <section class="product-list-section">
+      <div id="productContainer" class="product-grid" aria-live="polite">
+        <p class="empty-state">Memuat produk...</p>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/produk.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<header class="site-header">
+  <nav class="navbar" aria-label="Navigasi utama">
+    <div class="navbar-brand">
+      <a href="/">🛒 Toko Sembako <span>Ariesta</span></a>
+    </div>
+
+    <!-- Tombol hamburger, hanya terlihat di layar mobile lewat CSS media query -->
+    <button
+      id="hamburgerBtn"
+      class="hamburger-btn"
+      aria-label="Buka menu navigasi"
+      aria-expanded="false"
+      aria-controls="navMenu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul id="navMenu" class="nav-menu">
+      <li><a href="/">Beranda</a></li>
+      <li><a href="/produk">Produk</a></li>
+      <li><a href="/tanya-ai">Tanya AI</a></li>
+      <% if (isLoggedIn) { %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      <% } else { %>
+        <li><a href="/login">Login Admin</a></li>
+      <% } %>
+    </ul>
+  </nav>
+</header>

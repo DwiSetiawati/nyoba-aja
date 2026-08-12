@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">Belanja Sembako Jadi Lebih Gampang</h1>
+        <p>
+          Cek stok dan harga terbaru kapan saja, atau tanya langsung ke
+          fitur "Tanya AI" kami tanpa perlu nunggu balasan WhatsApp.
+        </p>
+        <a href="/produk" class="btn-primary">Lihat Semua Produk</a>
+      </div>
+    </section>
+
+    <!-- Preview Produk -->
+    <section class="preview-section" aria-labelledby="preview-title">
+      <h2 id="preview-title">Produk Terlaris</h2>
+      <div class="product-grid">
+        <% previewProducts.forEach(function(p) { %>
+          <article class="product-card">
+            <div class="product-icon">📦</div>
+            <h3><%= p.name %></h3>
+            <p class="product-category"><%= p.category %></p>
+            <p class="product-price">Rp <%= p.price.toLocaleString('id-ID') %></p>
+            <p class="product-stock">Stok: <%= p.stock %></p>
+            <a href="/produk/<%= p.id %>" class="btn-secondary">Lihat Detail</a>
+          </article>
+        <% }) %>
+      </div>
+      <div class="see-more">
+        <a href="/produk">Lihat produk lainnya &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/main.js"></script>
+</body>
+</html>
